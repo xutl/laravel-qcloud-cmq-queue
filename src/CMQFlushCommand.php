@@ -47,19 +47,9 @@ class CMQFlushCommand extends Command
         $queue = $client->getQueueRef($queue);
         $hasMessage = true;
         while ($hasMessage) {
-            $this->info('Peeking messages (Polling...)');
-            try {
-                $response = $queue->batchReceiveMessage(15);
-                if ($response->getMessages()) {
-                    $hasMessage = true;
-                } else {
-                    $hasMessage = false;
-                }
-            } catch (Exception $e) {
-                $this->info('no messages');
-                break;
-            }
-            $response = $queue->batchReceiveMessage(new BatchReceiveMessageRequest(15, 30));
+            $request = new BatchReceiveMessageRequest();
+            $request->setNumOfMsg(16);
+            $response = $queue->batchReceiveMessage($request);
             $handles = [];
 
             foreach ($response->getMessages() as $message) {

@@ -10,6 +10,7 @@ namespace XuTL\QCloud\Cmq\Queue;
 use Exception;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
 use Illuminate\Queue\Queue;
+use XuTL\QCloud\Cmq\Exception\CMQMessageNotExistException;
 use XuTL\QCloud\Cmq\Requests\SendMessageRequest;
 
 class CMQQueue extends Queue implements QueueContract
@@ -124,7 +125,7 @@ class CMQQueue extends Queue implements QueueContract
         $queue = $this->getDefaultIfNull($queue);
         try {
             $response = $this->adapter->useQueue($this->getQueue($queue))->receiveMessage($this->waitSeconds);
-        } catch (MessageNotExistException $e) {
+        } catch (CMQMessageNotExistException $e) {
             $response = null;
         }
         if ($response) {
