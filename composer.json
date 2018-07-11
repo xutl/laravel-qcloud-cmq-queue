@@ -1,0 +1,36 @@
+{
+  "name": "xutl/laravel-qcloud-cmq-queue",
+  "description": "This is a Laravel queue adapter for the QCloud CMQ.",
+  "keywords": [ "queue", "laravel", "qcloud", "cmq" ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "xutl/qcloud-cmq": "~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "XuTL\\QCloud\\Cmq\\Queue\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "XuTL\\QCloud\\Cmq\\Queue\\CmqServiceProvider"
+      ]
+    }
+  },
+  "prefer-stable": true,
+
+  "repositories": [
+    {
+      "packagist": false
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  ]
+}
