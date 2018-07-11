@@ -11,6 +11,8 @@ use Exception;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use XuTL\QCloud\Cmq\Client;
+use XuTL\QCloud\Cmq\Requests\BatchReceiveMessageRequest;
 
 class CMQFlushCommand extends Command
 {
@@ -41,7 +43,7 @@ class CMQFlushCommand extends Command
         if (!$queue) {
             $queue = $config['queue'];
         }
-        $client = new Client($config['endpoint'], $config['key'], $config['secret']);
+        $client = new Client($config['endpoint'], $config['secret_Id'], $config['secret_Key']);
         $queue = $client->getQueueRef($queue);
         $hasMessage = true;
         while ($hasMessage) {
@@ -59,9 +61,7 @@ class CMQFlushCommand extends Command
             }
             $response = $queue->batchReceiveMessage(new BatchReceiveMessageRequest(15, 30));
             $handles = [];
-            /**
-             * @var  \AliyunMNS\Model\Message $message
-             */
+
             foreach ($response->getMessages() as $message) {
                 $handles[] = $message->getReceiptHandle();
             }
