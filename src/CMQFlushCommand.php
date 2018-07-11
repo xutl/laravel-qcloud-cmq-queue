@@ -49,7 +49,7 @@ class CMQFlushCommand extends Command
         while ($hasMessage) {
             $this->info('Peeking messages (Polling...)');
             try {
-                $response = $queue->batchPeekMessage(15);
+                $response = $queue->batchReceiveMessage(15);
                 if ($response->getMessages()) {
                     $hasMessage = true;
                 } else {

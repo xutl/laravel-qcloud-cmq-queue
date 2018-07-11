@@ -6,6 +6,7 @@
  */
 
 namespace XuTL\QCloud\Cmq\Queue;
+
 use XuTL\QCloud\Cmq\AsyncCallback;
 use XuTL\QCloud\Cmq\Client;
 use XuTL\QCloud\Cmq\Http\Promise;
@@ -27,6 +28,7 @@ use XuTL\QCloud\Cmq\Responses\SendMessageResponse;
  * @method Promise sendMessageAsync( SendMessageRequest $request, AsyncCallback $callback = null )
  * @method Promise peekMessageAsync( AsyncCallback $callback = null )
  * @method Promise receiveMessageAsync( AsyncCallback $callback = null )
+ * @method deleteMessage( string $receiptHandle)
  * @method Promise deleteMessageAsync( string $receiptHandle, AsyncCallback $callback = null )
  * @method BatchSendMessageResponse batchSendMessage( BatchSendMessageRequest $request )
  * @method Promise batchSendMessageAsync( BatchSendMessageRequest $request, AsyncCallback $callback = null )

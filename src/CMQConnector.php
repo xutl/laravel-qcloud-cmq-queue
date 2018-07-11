@@ -27,21 +27,11 @@ class CMQConnector implements ConnectorInterface
     /**
      * @param array $config
      *
-     * @return mixed
-     */
-    protected function getEndpoint(array $config)
-    {
-        return str_replace('(s)', 's', $config['endpoint']);
-    }
-
-    /**
-     * @param array $config
-     *
      * @return Client
      */
     protected function getClient(array $config)
     {
-        return new Client($this->getEndpoint($config), $config['secret_Id'], $config['secret_Key']);
+        return new Client($config['endpoint'], $config['secret_Id'], $config['secret_Key']);
     }
 
     /**

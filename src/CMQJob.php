@@ -94,7 +94,7 @@ class CMQJob extends Job implements JobContract
         if ($delay < 1) {
             $delay = 1;
         }
-        $this->adapter->changeMessageVisibility($this->job->getReceiptHandle(), $delay);
+        //$this->adapter->changeMessageVisibility($this->job->getReceiptHandle(), $delay);
     }
 
     /**
