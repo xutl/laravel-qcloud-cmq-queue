@@ -18,6 +18,8 @@ use XuTL\QCloud\Cmq\Requests\SendMessageRequest;
 use XuTL\QCloud\Cmq\Responses\BatchDeleteMessageResponse;
 use XuTL\QCloud\Cmq\Responses\BatchReceiveMessageResponse;
 use XuTL\QCloud\Cmq\Responses\BatchSendMessageResponse;
+use XuTL\QCloud\Cmq\Responses\DeleteMessageResponse;
+use XuTL\QCloud\Cmq\Responses\ReceiveMessageResponse;
 use XuTL\QCloud\Cmq\Responses\SendMessageResponse;
 
 /**
@@ -27,8 +29,9 @@ use XuTL\QCloud\Cmq\Responses\SendMessageResponse;
  * @method SendMessageResponse sendMessage( SendMessageRequest $request )
  * @method Promise sendMessageAsync( SendMessageRequest $request, AsyncCallback $callback = null )
  * @method Promise peekMessageAsync( AsyncCallback $callback = null )
+ * @method ReceiveMessageResponse receiveMessage($waitSeconds = null)
  * @method Promise receiveMessageAsync( AsyncCallback $callback = null )
- * @method deleteMessage( string $receiptHandle)
+ * @method DeleteMessageResponse deleteMessage( string $receiptHandle)
  * @method Promise deleteMessageAsync( string $receiptHandle, AsyncCallback $callback = null )
  * @method BatchSendMessageResponse batchSendMessage( BatchSendMessageRequest $request )
  * @method Promise batchSendMessageAsync( BatchSendMessageRequest $request, AsyncCallback $callback = null )

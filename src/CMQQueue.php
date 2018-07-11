@@ -84,7 +84,7 @@ class CMQQueue extends Queue implements QueueContract
         $message = new SendMessageRequest();
         $message->setMsgBody($payload);
         $response = $this->adapter->useQueue($this->getQueue($queue))->sendMessage($message);
-        return $response->msgId;
+        return $response->getMessageId();
     }
 
     /**
@@ -109,7 +109,7 @@ class CMQQueue extends Queue implements QueueContract
         $message->setMsgBody($payload);
         $message->setDelaySeconds($seconds);
         $response = $this->adapter->useQueue($this->getQueue($queue))->sendMessage($message);
-        return $response->msgId;
+        return $response->getMessageId();
     }
 
     /**
