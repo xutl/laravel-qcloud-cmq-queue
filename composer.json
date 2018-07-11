@@ -18,7 +18,7 @@
     },
     "laravel": {
       "providers": [
-        "XuTL\\QCloud\\Cmq\\Queue\\CmqServiceProvider"
+        "XuTL\\QCloud\\Cmq\\Queue\\CMQServiceProvider"
       ]
     }
   },
