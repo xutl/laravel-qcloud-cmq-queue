@@ -37,7 +37,7 @@ class CMQJob extends Job implements JobContract
      * @param \Illuminate\Container\Container $container
      * @param CMQAdapter $mns
      * @param string $queue
-     * @param \AliyunMNS\Responses\ReceiveMessageResponse $job
+     * @param ReceiveMessageResponse $job
      */
     public function __construct(Container $container, CMQAdapter $mns, $queue, ReceiveMessageResponse $job)
     {

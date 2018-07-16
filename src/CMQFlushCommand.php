@@ -7,12 +7,10 @@
 
 namespace XuTL\QCloud\Cmq\Queue;
 
-use Exception;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use XuTL\QCloud\Cmq\Client;
-use XuTL\QCloud\Cmq\Requests\BatchReceiveMessageRequest;
 
 class CMQFlushCommand extends Command
 {
@@ -47,9 +45,7 @@ class CMQFlushCommand extends Command
         $queue = $client->getQueueRef($queue);
         $hasMessage = true;
         while ($hasMessage) {
-            $request = new BatchReceiveMessageRequest();
-            $request->setNumOfMsg(16);
-            $response = $queue->batchReceiveMessage($request);
+            $response = $queue->batchReceiveMessage(16);
             $handles = [];
 
             foreach ($response->getMessages() as $message) {
